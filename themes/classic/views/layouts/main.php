@@ -85,7 +85,7 @@
                         Avda. Mariscal López 2801/99 y Reclus<br>
                         <strong>Tel&eacute;fono:</strong> <a href="tel:(021) 6190000" class="tele">(021) 6190000</a><br>
                         <strong>Fax:</strong> (021) 582 750<br>
-                        <span class="overflow"><strong>email:</strong> <a href="mailto:email@domain.com">dgmautomotores@gmail.com</a></span> </p>
+                        <span class="overflow"><strong>email:</strong> <a href="mailto:dgmautomotores@gmail.com">dgmautomotores@gmail.com</a></span> </p>
                 </section>
                 <!--close section-->
 
@@ -94,8 +94,9 @@
                     <div class="social">
                       <a href="https://www.facebook.com/DGMAutomotoresPY" target="blank"><i class="icon-facebook facebook"></i></a>
                       <a href="https://twitter.com/xfranm" target="blank"><i class="icon-twitter twitter"></i></a>
-                      <a href="https://www.linkedin.com/nhome/" target="blank"><i class="icon-linkedin linkedin"></i></a>
-                      <a href="https://mail.google.com/mail/u/0/#inbox" target="blank"><i class="icon-google-plus google-plus"></i></a>
+                      <a href="https://www.instagram.com/haideg.93" target="blank"><i class="icon-linkedin linkedin"></i></a>
+                      <!-- <a href="https://www.linkedin.com/nhome/" target="blank"><i class="icon-linkedin linkedin"></i></a> -->
+                      <!-- <a href="https://mail.google.com/mail/u/0/#inbox" target="blank"><i class="icon-google-plus google-plus"></i></a> -->
                     </div>
                 </section>
                 <!--close section-->
