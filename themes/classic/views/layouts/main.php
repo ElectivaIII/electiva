@@ -33,7 +33,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </a>
-      <a class="brand" href="#">DGM Automotores</a>
+      <a class="brand" href="index.html">DGM Automotores</a>
 
       <div class="nav-collapse collapse pull-right">
 			<?php $this->widget('zii.widgets.CMenu',array(

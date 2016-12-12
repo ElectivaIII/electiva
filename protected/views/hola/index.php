@@ -1,8 +1,7 @@
 <h1>Siguenos en twitter
-<?php echo $twitter;?>
+	<?php echo $twitter;?>
 </h1>
-
-<?php foreach($model as $data):?>
+	<?php foreach($model as $data):?>
 <h1>
 <?php echo $data->username;?></h1>
 <?php endforeach;?>

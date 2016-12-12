@@ -7,7 +7,7 @@ class HolaController extends Controller
 	{
 	
 	    $model=CActiveRecord::model("Users")->findAll();
-		$twitter ="@codigo";
+		$twitter ="@xfranm";
 		$this->render("index",array("model"=>$model,"twitter"=>$twitter));
 		
 	}
