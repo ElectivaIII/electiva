@@ -4,27 +4,11 @@
 ?>
 
 <div class="media">
-
-	<!-- <b>:</b> -->
-
-	<br />
 	<div class="media-body">
-		<h1 class="media-heading">
-			<?php echo CHtml::encode($data->getAttributeLabel('id')); ?><?php echo CHtml::link(CHtml::encode($data->id), array('view', 'id'=>$data->id)); ?>
-		</h1>
+		<h3 class="media-heading">
+			<?php echo CHtml::encode($data->getAttributeLabel('id')); ?>: <?php echo CHtml::link(CHtml::encode($data->id), array('view', 'id'=>$data->id)); ?>
+			<?php echo CHtml::encode($data->getAttributeLabel('username')); ?> <small><?php echo CHtml::encode($data->email); ?></small>
+		</h3>
+		<p><?php echo CHtml::encode($data->password); ?></p>
 	</div>
-
-<!-- 	<b><?php echo CHtml::encode($data->getAttributeLabel('username')); ?>:</b>
-	
-	<br /> -->
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('password')); ?>:</b>
-	<?php echo CHtml::encode($data->password); ?>
-	<br />
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('email')); ?>:</b>
-	<?php echo CHtml::encode($data->email); ?>
-	<br />
-
-
 </div>
