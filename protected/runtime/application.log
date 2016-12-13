@@ -6382,3 +6382,25 @@ Stack trace:
 #16 {main}
 REQUEST_URI=/yii/electiva/hola/index
 ---
+2016/12/13 22:33:57 [error] [php] include(CountriesController.php): failed to open stream: No such file or directory (C:\xampp\htdocs\yii\framework\YiiBase.php:432)
+Stack trace:
+#0 C:\xampp\htdocs\yii\electiva\protected\controllers\CountriesController.php(3): spl_autoload_call()
+#1 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(354): require()
+#2 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(276): CWebApplication->createController()
+#3 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#4 C:\xampp\htdocs\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#5 C:\xampp\htdocs\yii\electiva\index.php(13): CWebApplication->run()
+REQUEST_URI=/yii/electiva/countries
+in C:\xampp\htdocs\yii\electiva\protected\controllers\CountriesController.php (3)
+in C:\xampp\htdocs\yii\electiva\index.php (13)
+2016/12/13 22:34:13 [error] [php] include(CountriesController.php): failed to open stream: No such file or directory (C:\xampp\htdocs\yii\framework\YiiBase.php:432)
+Stack trace:
+#0 C:\xampp\htdocs\yii\electiva\protected\controllers\CountriesController.php(3): spl_autoload_call()
+#1 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(354): require()
+#2 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(276): CWebApplication->createController()
+#3 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#4 C:\xampp\htdocs\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#5 C:\xampp\htdocs\yii\electiva\index.php(13): CWebApplication->run()
+REQUEST_URI=/yii/electiva/countries/index
+in C:\xampp\htdocs\yii\electiva\protected\controllers\CountriesController.php (3)
+in C:\xampp\htdocs\yii\electiva\index.php (13)
