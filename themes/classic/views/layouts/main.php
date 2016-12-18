@@ -33,18 +33,19 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </a>
-      <a class="brand" href="index.html">DGM Automotores</a>
+      <a class="brand" href="<?php echo Yii::app()->baseUrl.'/site/index' ;?>">DGM Automotores</a>
 
       <div class="nav-collapse collapse pull-right">
 			<?php $this->widget('zii.widgets.CMenu',array(
 				'htmlOptions'=>array("class"=>"nav"),
 				'items'=>array(
 					array('label'=>'Inicio', 'url'=>array('/site/index')),
-          array('label'=>'Autos', 'url'=>array('/site/contact')),
-          array('label'=>'Repuestos', 'url'=>array('/site/contact')),
-          array('label'=>'Agendamiento', 'url'=>array('/site/contact')),
+          array('label'=>'Autos', 'url'=>array('/autos/index')),
+          array('label'=>'Repuestos', 'url'=>array('/contactos/create')),
+          array('label'=>'Agendamiento', 'url'=>array('/agendamientos/create')),
 					array('label'=>'¿Quiénes somos?', 'url'=>array('/site/page', 'view'=>'about')),
-					array('label'=>'Contactos', 'url'=>array('/site/contact')),
+					array('label'=>'Contactos', 'url'=>array('/contactenos/create')),
+          array('label'=>'Subir imagenes', 'url'=>array('/imagenForm'),'visible'=>!Yii::app()->user->isGuest),
 					array('label'=>'Login', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
 					array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest)
 				),
@@ -85,7 +86,7 @@
                         Avda. Mariscal López 2801/99 y Reclus<br>
                         <strong>Tel&eacute;fono:</strong> <a href="tel:(021) 6190000" class="tele">(021) 6190000</a><br>
                         <strong>Fax:</strong> (021) 582 750<br>
-                        <span class="overflow"><strong>email:</strong> <a href="mailto:dgmautomotores@gmail.com">dgmautomotores@gmail.com</a></span> </p>
+                        <span class="overflow"><strong>email:</strong> <a href="mailto:email@domain.com">dgmautomotores@gmail.com</a></span> </p>
                 </section>
                 <!--close section-->
 
@@ -94,9 +95,8 @@
                     <div class="social">
                       <a href="https://www.facebook.com/DGMAutomotoresPY" target="blank"><i class="icon-facebook facebook"></i></a>
                       <a href="https://twitter.com/xfranm" target="blank"><i class="icon-twitter twitter"></i></a>
-                      <a href="https://www.instagram.com/haideg.93" target="blank"><i class="icon-linkedin linkedin"></i></a>
-                      <!-- <a href="https://www.linkedin.com/nhome/" target="blank"><i class="icon-linkedin linkedin"></i></a> -->
-                      <!-- <a href="https://mail.google.com/mail/u/0/#inbox" target="blank"><i class="icon-google-plus google-plus"></i></a> -->
+                      <a href="https://www.linkedin.com/nhome/" target="blank"><i class="icon-linkedin linkedin"></i></a>
+                      <a href="https://mail.google.com/mail/u/0/#inbox" target="blank"><i class="icon-google-plus google-plus"></i></a>
                     </div>
                 </section>
                 <!--close section-->
@@ -144,7 +144,7 @@
  <section class="footer-credits">
     <div class="container">
         <ul class="clearfix">
-            <li>© 2016 DGM Automotores. Desarrollado por Nosotros. Todos los derechos reservados.</li>
+            <li>© 2016 DGM Automotores. Desarrollado por DGM Automotores. Todos los derechos reservados.</li>
             <li>Electiva III</li>
         </ul>
     </div>

@@ -27,5 +27,6 @@ $this->menu=array(
 		'anho',
 		'kilometraje',
 		'precio',
+		'img',
 	),
 )); ?>

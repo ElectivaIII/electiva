@@ -49,6 +49,14 @@
 		<?php echo $form->error($model,'precio'); ?>
 	</div>
 
+	<div>
+		<?php echo $form->labelEx($model,'img'); ?>
+		<?php echo $form->textField($model,'img'); ?>
+		<?php echo $form->error($model,'img'); ?>
+	</div>
+
+	
+
 	<div class="buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save', array("class"=>"btn btn-primary btn-large")); ?>
 	</div>

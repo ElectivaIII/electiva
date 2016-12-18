@@ -1,12 +1,16 @@
 <?php
-/* @var $this VehiculosController */
-/* @var $data Vehiculos */
+/* @var $this AutosController */
+/* @var $data Autos */
 ?>
 
-<div class="media">
+<div class="view">
+
+	<b><?php echo CHtml::encode($data->getAttributeLabel('id')); ?>:</b>
+	<?php echo CHtml::link(CHtml::encode($data->id), array('view', 'id'=>$data->id)); ?>
+	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('matricula')); ?>:</b>
-	<?php echo CHtml::link(CHtml::encode($data->matricula), array('view', 'id'=>$data->matricula)); ?>
+	<?php echo CHtml::encode($data->matricula); ?>
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('marca')); ?>:</b>
@@ -25,8 +29,8 @@
 	<?php echo CHtml::encode($data->precio); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('Imagen')); ?>:</b>
-	<?php echo CHtml::encode($data->img); ?>
+	<b><?php echo CHtml::encode($data->getAttributeLabel('imagen')); ?>:</b>
+	<?php echo CHtml::encode($data->imagen); ?>
 	<br />
 
 

@@ -11,5 +11,12 @@ class Agendamientos extends CActiveRecord
 		return "agendamientos";
 	}
 
+	public function rules()
+	{
+		return array(
+
+			array("cedula, chapa, mantenimiento, comentario, taller, fecha", "required"),
+		);
+	}
 	
 }

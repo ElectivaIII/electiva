@@ -36,6 +36,8 @@
 		<?php echo $form->textField($model,'precio'); ?>
 	</div>
 
+	
+
 	<div class="buttons">
 		<?php echo CHtml::submitButton('Search', array("class"=>"btn btn-primary btn")); ?>
 	</div>

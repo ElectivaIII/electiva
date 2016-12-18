@@ -6,7 +6,10 @@
 
     <div class="well">
 
-          <i style="font-size: 200px" class="icon-credit-card icon-4x"></i>
+          <!-- <i style="font-size: 200px" class="icon-credit-card icon-4x"></i> -->
+
+          <?php include("jssorSlider.html") ?>
+
           <h2>DGM Automotores</h2>
 
     <div class="row-fluid">

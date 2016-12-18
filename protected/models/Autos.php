@@ -1,23 +1,26 @@
 <?php
 
 /**
- * This is the model class for table "vehiculos".
+ * This is the model class for table "autos".
  *
- * The followings are the available columns in table 'vehiculos':
+ * The followings are the available columns in table 'autos':
+ * @property integer $id
  * @property string $matricula
  * @property string $marca
- * @property integer $anho
- * @property integer $kilometraje
- * @property integer $precio
+ * @property string $anho
+ * @property string $kilometraje
+ * @property string $precio
+ * @property string $imagen
  */
-class Vehiculos extends CActiveRecord
+class Autos extends CActiveRecord
 {
+	public $foto;
 	/**
 	 * @return string the associated database table name
 	 */
 	public function tableName()
 	{
-		return 'vehiculos';
+		return 'autos';
 	}
 
 	/**
@@ -28,12 +31,14 @@ class Vehiculos extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('matricula, marca, anho, kilometraje, precio', 'required'),
-			array('anho, kilometraje, precio', 'numerical', 'integerOnly'=>true),
-			array('matricula, marca', 'length', 'max'=>255),
+			//array('matricula, marca, anho, kilometraje, precio, imagen', 'required'),
+			array('matricula, marca, modelo, anho, kilometraje, precio', 'length', 'max'=>60),
+			array('imagen', 'length', 'max'=>200,'on'=>'insert,update'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('matricula, marca, anho, kilometraje, precio, img', 'safe', 'on'=>'search'),
+			array('id, matricula, marca, anho, kilometraje, precio', 'safe', 'on'=>'search'),
+			array('foto','file','types'=>'jpg, jpeg, png, gif','allowEmpty'=>true,'on'=>'update'),
+
 		);
 	}
 
@@ -54,11 +59,15 @@ class Vehiculos extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
+			'id' => 'ID',
 			'matricula' => 'Matricula',
 			'marca' => 'Marca',
+			'modelo' => 'Modelo',
 			'anho' => 'Anho',
 			'kilometraje' => 'Kilometraje',
 			'precio' => 'Precio',
+			'imagen' => 'Imagen',
+			'foto' => 'Foto',
 		);
 	}
 
@@ -80,11 +89,13 @@ class Vehiculos extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
+		//$criteria->compare('id',$this->id);
 		$criteria->compare('matricula',$this->matricula,true);
 		$criteria->compare('marca',$this->marca,true);
-		$criteria->compare('anho',$this->anho);
-		$criteria->compare('kilometraje',$this->kilometraje);
-		$criteria->compare('precio',$this->precio);
+		$criteria->compare('anho',$this->anho,true);
+		$criteria->compare('kilometraje',$this->kilometraje,true);
+		$criteria->compare('precio',$this->precio,true);
+		//$criteria->compare('imagen',$this->imagen,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -95,7 +106,7 @@ class Vehiculos extends CActiveRecord
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.
-	 * @return Vehiculos the static model class
+	 * @return Autos the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{

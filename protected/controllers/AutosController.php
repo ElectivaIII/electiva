@@ -1,6 +1,6 @@
 <?php
 
-class VehiculosController extends Controller
+class AutosController extends Controller
 {
 	/**
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
@@ -15,7 +15,7 @@ class VehiculosController extends Controller
 	{
 		return array(
 			'accessControl', // perform access control for CRUD operations
-			'postOnly + delete', // we only allow deletion via POST request
+			//'postOnly + delete', // we only allow deletion via POST request
 		);
 	}
 
@@ -40,29 +40,21 @@ class VehiculosController extends Controller
 				'users'=>array('admin'),
 			),
 			array('deny',  // deny all users
-				'actions'=>array('upload'),
 				'users'=>array('*'),
 			),
-
-
 		);
-	}
-
-	public function actionUpload()
-	{
-		$this->render('upload');
 	}
 
 	/**
 	 * Displays a particular model.
 	 * @param integer $id the ID of the model to be displayed
 	 */
-	public function actionView($id)
+	/*public function actionView($id)
 	{
 		$this->render('view',array(
 			'model'=>$this->loadModel($id),
 		));
-	}
+	}*/
 
 	/**
 	 * Creates a new model.
@@ -70,16 +62,30 @@ class VehiculosController extends Controller
 	 */
 	public function actionCreate()
 	{
-		$model=new Vehiculos;
+		$model=new Autos;
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
-
-		if(isset($_POST['Vehiculos']))
+         
+		if(isset($_POST['Autos']))
 		{
-			$model->attributes=$_POST['Vehiculos'];
+			$rnd = rand(0,9999);
+
+			
+			$model->attributes=$_POST['Autos'];
+
+			$uploadedFile=CUploadedFile::getInstance($model,'foto');
+
+			$fileName = "{$rnd}-{$uploadedFile}";  // random number + file name
+            $model->imagen = $fileName;
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->matricula));
+			{
+			    //$uploadedFile->saveAs(Yii::app()->basePath.'/../images/'.$fileName); 
+			    $uploadedFile->saveAs(Yii::getPathOfAlias('webroot').'/image/'.$fileName);
+
+				$this->redirect(array('view','id'=>$model->id));
+
+		    }
 		}
 
 		$this->render('create',array(
@@ -99,11 +105,27 @@ class VehiculosController extends Controller
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Vehiculos']))
+		if(isset($_POST['Autos']))
 		{
-			$model->attributes=$_POST['Vehiculos'];
+			
+
+			$rnd = rand(0,9999);
+
+			
+			$model->attributes=$_POST['Autos'];
+
+			$uploadedFile=CUploadedFile::getInstance($model,'foto');
+
+			$fileName = "{$rnd}-{$uploadedFile}";  // random number + file name
+            $model->imagen = $fileName;
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->matricula));
+			{
+			    //$uploadedFile->saveAs(Yii::app()->basePath.'/../images/'.$fileName); 
+			    $uploadedFile->saveAs(Yii::getPathOfAlias('webroot').'/image/'.$fileName);
+
+				$this->redirect(array('view','id'=>$model->id));
+
+		    }
 		}
 
 		$this->render('update',array(
@@ -123,17 +145,37 @@ class VehiculosController extends Controller
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 		if(!isset($_GET['ajax']))
 			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+
+		//$this->redirect(array('admin'));
 	}
+
+
+	
+	public function actionView($id)
+	{
+		$model=Autos::model()->findByPk($id);
+		$this->render("vista", array("model"=>$model));
+		
+	}
+
 
 	/**
 	 * Lists all models.
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('Vehiculos');
+		/*$dataProvider=new CActiveDataProvider('Autos');
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
-		));
+		));*/
+
+
+		$model = new Autos();
+
+		$autos=Autos::model()->findAll();
+		$this->render("index",array("autos"=>$autos));
+
+		
 	}
 
 	/**
@@ -141,10 +183,10 @@ class VehiculosController extends Controller
 	 */
 	public function actionAdmin()
 	{
-		$model=new Vehiculos('search');
+		$model=new Autos('search');
 		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['Vehiculos']))
-			$model->attributes=$_GET['Vehiculos'];
+		if(isset($_GET['Autos']))
+			$model->attributes=$_GET['Autos'];
 
 		$this->render('admin',array(
 			'model'=>$model,
@@ -155,12 +197,12 @@ class VehiculosController extends Controller
 	 * Returns the data model based on the primary key given in the GET variable.
 	 * If the data model is not found, an HTTP exception will be raised.
 	 * @param integer $id the ID of the model to be loaded
-	 * @return Vehiculos the loaded model
+	 * @return Autos the loaded model
 	 * @throws CHttpException
 	 */
 	public function loadModel($id)
 	{
-		$model=Vehiculos::model()->findByPk($id);
+		$model=Autos::model()->findByPk($id);
 		if($model===null)
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;
@@ -168,11 +210,11 @@ class VehiculosController extends Controller
 
 	/**
 	 * Performs the AJAX validation.
-	 * @param Vehiculos $model the model to be validated
+	 * @param Autos $model the model to be validated
 	 */
 	protected function performAjaxValidation($model)
 	{
-		if(isset($_POST['ajax']) && $_POST['ajax']==='vehiculos-form')
+		if(isset($_POST['ajax']) && $_POST['ajax']==='autos-form')
 		{
 			echo CActiveForm::validate($model);
 			Yii::app()->end();

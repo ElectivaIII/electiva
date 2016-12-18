@@ -18,6 +18,6 @@
 <br>Fecha<br>
 <?php echo $form->textField($model,"fecha");?>
 <?php echo $form->error($model, "fecha");?>
-<br>s
+<br>
 <?php echo CHtml::submitButton("Crear", array("class"=>"btn btn-primary btn-large"));?>
 <?php $this->endWidget();?>
