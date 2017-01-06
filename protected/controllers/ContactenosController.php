@@ -33,7 +33,9 @@ class ContactenosController extends Controller
 			$model->attributes=$_POST["Contactenos"];
 			if($model->save())
 			{
+				
 				$this->redirect(array("index"));
+				
 			}
 
 		}

@@ -14,7 +14,7 @@ class Contactenos extends CActiveRecord
 	public function rules()
 	{
 		return array(
-			array("cedula, nombres, apellidos, telefono, comentario", "required"),
+			array("cedula, nombres, apellidos, telefono", "required", 'message'=>'{attribute} no puede dejar en blanco.'),
 			array('email', 'email'),
 			array('verifyCode', 'captcha', 'allowEmpty'=>!CCaptcha::checkRequirements()),
 		);

@@ -81,15 +81,22 @@ Si desea hacernos alguna consulta o bien alguna sugerencia por favor complete su
 		<?php $this->widget('CCaptcha'); ?>
 		<?php echo $form->textField($model,'verifyCode'); ?>
 		</div>
+		<?php echo $form->error($model,'verifyCode'); ?>
 		<div class="hint">Por favor, introduzca las letras como se muestran en la imagen de arriba.
 		<br>Las letras no distinguen entre mayúsculas y minúsculas.</div>
-		<?php echo $form->error($model,'verifyCode'); ?>
+		<br>
+		
 	</div>
 	<?php endif; ?>
 
 	<div class="buttons">
 		<?php echo CHtml::submitButton('Enviar', array("class"=>"btn btn-primary btn-large")); ?>
 	</div>
+
+
+	
+
+
 
 <?php $this->endWidget(); ?>
 

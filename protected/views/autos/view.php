@@ -10,8 +10,8 @@ $this->breadcrumbs=array(
 $this->menu=array(
 	array('label'=>'List Autos', 'url'=>array('index')),
 	array('label'=>'Create Autos', 'url'=>array('create')),
-	array('label'=>'Update Autos', 'url'=>array('update', 'id'=>$model->id)),
-	array('label'=>'Delete Autos', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?')),
+	array('label'=>'Update Autos', 'url'=>array('update', 'id'=>$model->id))
+	array('label'=>'Delete Autos', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'¿Está seguro de que desea eliminar el registro?')),
 	array('label'=>'Manage Autos', 'url'=>array('admin')),
 );
 ?>

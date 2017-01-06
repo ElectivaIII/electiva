@@ -31,12 +31,12 @@ class Autos extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			//array('matricula, marca, anho, kilometraje, precio, imagen', 'required'),
+			array('matricula, marca, modelo, anho, kilometraje, imagen,precio', 'required', 'message'=>'{attribute} es obligatorio.'),
 			array('matricula, marca, modelo, anho, kilometraje, precio', 'length', 'max'=>60),
 			array('imagen', 'length', 'max'=>200,'on'=>'insert,update'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, matricula, marca, anho, kilometraje, precio', 'safe', 'on'=>'search'),
+			array('id, matricula, modelo, marca, anho, kilometraje, precio', 'safe', 'on'=>'search'),
 			array('foto','file','types'=>'jpg, jpeg, png, gif','allowEmpty'=>true,'on'=>'update'),
 
 		);
@@ -92,6 +92,7 @@ class Autos extends CActiveRecord
 		//$criteria->compare('id',$this->id);
 		$criteria->compare('matricula',$this->matricula,true);
 		$criteria->compare('marca',$this->marca,true);
+		$criteria->compare('modelo',$this->modelo,true);
 		$criteria->compare('anho',$this->anho,true);
 		$criteria->compare('kilometraje',$this->kilometraje,true);
 		$criteria->compare('precio',$this->precio,true);

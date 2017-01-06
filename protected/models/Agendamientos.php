@@ -15,7 +15,8 @@ class Agendamientos extends CActiveRecord
 	{
 		return array(
 
-			array("cedula, chapa, mantenimiento, comentario, taller, fecha", "required"),
+			array("cedula, nombre, apellido, chapa, marca, mantenimiento, taller, fecha", "required", 'message'=>'{attribute} es obligatorio.'),
+
 		);
 	}
 	

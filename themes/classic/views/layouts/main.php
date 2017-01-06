@@ -41,11 +41,11 @@
 				'items'=>array(
 					array('label'=>'Inicio', 'url'=>array('/site/index')),
           array('label'=>'Autos', 'url'=>array('/autos/index')),
-          array('label'=>'Repuestos', 'url'=>array('/contactos/create')),
+          array('label'=>'Repuestos', 'url'=>array('/repuestos/index')),
           array('label'=>'Agendamiento', 'url'=>array('/agendamientos/create')),
 					array('label'=>'¿Quiénes somos?', 'url'=>array('/site/page', 'view'=>'about')),
 					array('label'=>'Contactos', 'url'=>array('/contactenos/create')),
-          array('label'=>'Subir imagenes', 'url'=>array('/imagenForm'),'visible'=>!Yii::app()->user->isGuest),
+          // array('label'=>'Subir imagenes', 'url'=>array('/imagenForm'),'visible'=>!Yii::app()->user->isGuest),
 					array('label'=>'Login', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
 					array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest)
 				),

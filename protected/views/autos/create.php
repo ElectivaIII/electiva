@@ -3,16 +3,16 @@
 /* @var $model Autos */
 
 $this->breadcrumbs=array(
-	'Autoses'=>array('index'),
-	'Create',
+	'Vehículos'=>array('index'),
+	'Registrar',
 );
 
 $this->menu=array(
-	array('label'=>'List Autos', 'url'=>array('index')),
-	array('label'=>'Manage Autos', 'url'=>array('admin')),
+	array('label'=>'Lista de Vehículos', 'url'=>array('index')),
+	array('label'=>'Administrar Vehículos', 'url'=>array('admin')),
 );
 ?>
 
-<h1>Registrar Vehiculo</h1>
+<h1>Registrar Vehículo</h1>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

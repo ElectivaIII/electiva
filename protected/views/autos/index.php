@@ -5,7 +5,10 @@ $this->menu=array(
 
 
 <h1>Vehículos</h1>
-<table class="table">
+
+
+<table class="table table-responsive">
+
 	<tr>
 		<td><strong>MARCA</strong></td>
 		<td><strong>MODELO</strong></td>
@@ -16,14 +19,31 @@ $this->menu=array(
 	<tr>
 		<td><?php echo $data->marca?></td>
 		<td><?php echo $data->modelo?></td>
-		<td><?php echo $data->anho?></td>
+		<td><?php echo number_format($data->anho, 0, '', '.')?></td>
 		<td>
-	    	<?php echo CHtml::link("<img class='img-responsive' src='".Yii::app()->request->baseUrl.'/image/'.$data->imagen."' title='Clic en la imagen para ver detalles'/>",array("view","id"=>$data->id));?>
+	    	<?php echo CHtml::link("<img src='".Yii::app()->request->baseUrl.'/image/'.$data->imagen."' style='width:228px;height:228px;' title='Clic en la imagen para ver detalles'/>",array("view","id"=>$data->id));?>
 	    </td>
 	</tr>
 
 
 
 <?php endforeach; ?>
- 
+
 </table>
+
+<div class="pagination" align='right'>
+	<?php $this->widget('CLinkPager', array(
+     'pages' => $pages,
+    'header' => '',
+    'firstPageLabel' => 'Primero',
+    'nextPageLabel' => 'Siguiente',
+    'prevPageLabel' => 'Anterior',
+    'lastPageLabel' => 'Último',
+    'selectedPageCssClass' => 'active',
+    'hiddenPageCssClass' => 'disabled',
+    'htmlOptions' => array(
+        'class' => '',
+    )
+   
+)) ?>	
+</div>

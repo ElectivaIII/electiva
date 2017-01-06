@@ -16,66 +16,61 @@
 	'enableClientValidation'=>false,'htmlOptions'=>array('enctype'=>'multipart/form-data'),
 	'clientOptions'=>array('validateOnSubmit'=>false,))); ?>
 
-	<p class="note">Fields with <span class="required">*</span> are required.</p>
+	<p class="note">Todos los campos son obligatorios.</p>
 
 	<?php echo $form->errorSummary($model); ?>
 
-	<div class="row">
+	<div>
 		<?php echo $form->labelEx($model,'matricula'); ?>
 		<?php echo $form->textField($model,'matricula',array('size'=>60,'maxlength'=>60)); ?>
 		<?php echo $form->error($model,'matricula'); ?>
 	</div>
 
-	<div class="row">
+	<div>
 		<?php echo $form->labelEx($model,'marca'); ?>
-		<?php echo $form->textField($model,'marca',array('size'=>60,'maxlength'=>60)); ?>
+		<?php echo $form->dropDownList($model,'marca', CHtml::listData(marcavehiculos::model()->findAll(array('order' => 'nombre ASC')), 'nombre', 'nombre'), array('empty'=>'Seleccione la Marca'));?>
 		<?php echo $form->error($model,'marca'); ?>
 	</div>
 
-	<div class="row">
+	<div>
 		<?php echo $form->labelEx($model,'modelo'); ?>
 		<?php echo $form->textField($model,'modelo',array('size'=>60,'maxlength'=>60)); ?>
 		<?php echo $form->error($model,'modelo'); ?>
 	</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'anho'); ?>
+	<div>
+		<?php echo $form->labelEx($model,'a&ntilde;o'); ?>
 		<?php echo $form->textField($model,'anho',array('size'=>60,'maxlength'=>60)); ?>
 		<?php echo $form->error($model,'anho'); ?>
 	</div>
 
-	<div class="row">
+	<div>
 		<?php echo $form->labelEx($model,'kilometraje'); ?>
 		<?php echo $form->textField($model,'kilometraje',array('size'=>60,'maxlength'=>60)); ?>
 		<?php echo $form->error($model,'kilometraje'); ?>
 	</div>
 
-	<div class="row">
+	<div>
 		<?php echo $form->labelEx($model,'precio'); ?>
 		<?php echo $form->textField($model,'precio',array('size'=>60,'maxlength'=>60)); ?>
 		<?php echo $form->error($model,'precio'); ?>
 	</div>
     
-
-
-    
-	
-
-	<div class="row">
+	<div>
 		<?php echo $form->labelEx($model,'foto'); ?>
 		<?php echo $form->fileField($model,'foto'); ?>
 		<?php echo $form->error($model,'foto'); ?>
 	</div>
 	<?php if($model->isNewRecord!='1') { ?>
-	<div class="row">
+	<div>
      <?php echo CHtml::image(Yii::app()->request->baseUrl.'/image/'.$model->imagen,"imagen",array("width"=>200)); ?>  
    
 	</div>
     <?php } ?>
 	
     
-	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Guardar' : 'Save'); ?>
+	<div class="buttons">
+		<?php echo CHtml::submitButton($model->isNewRecord ? 'Guardar' : 'Guardar', array("class"=>"btn btn-primary btn-large")); ?>
 	</div>
 
 <?php $this->endWidget(); ?>

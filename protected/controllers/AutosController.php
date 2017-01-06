@@ -76,12 +76,19 @@ class AutosController extends Controller
 
 			$uploadedFile=CUploadedFile::getInstance($model,'foto');
 
-			$fileName = "{$rnd}-{$uploadedFile}";  // random number + file name
-            $model->imagen = $fileName;
+			if (!empty($uploadedFile)) {
+				$fileName = "{$rnd}-{$uploadedFile}";  // random number + file name
+			} else {
+				$fileName = "default.png";
+			}
+
+			$model->imagen = $fileName;
 			if($model->save())
 			{
-			    //$uploadedFile->saveAs(Yii::app()->basePath.'/../images/'.$fileName); 
-			    $uploadedFile->saveAs(Yii::getPathOfAlias('webroot').'/image/'.$fileName);
+			    
+			    if (!empty($uploadedFile)) {
+			    	$uploadedFile->saveAs(Yii::getPathOfAlias('webroot').'/image/'.$fileName);
+			    } 
 
 				$this->redirect(array('view','id'=>$model->id));
 
@@ -116,16 +123,26 @@ class AutosController extends Controller
 
 			$uploadedFile=CUploadedFile::getInstance($model,'foto');
 
-			$fileName = "{$rnd}-{$uploadedFile}";  // random number + file name
+			if (!empty($uploadedFile)) {
+				$fileName = "{$rnd}-{$uploadedFile}";  // random number + file name //se cargo una nueva imagen
+			} else if ($model->imagen!="default.png") {
+				$fileName = $model->imagen; //no se cargo una nueva imagen y ya se habia asignado otra que no era la default
+			} else {
+				$fileName = "default.png";
+			}
+            
             $model->imagen = $fileName;
-			if($model->save())
+			if($model->update())
 			{
-			    //$uploadedFile->saveAs(Yii::app()->basePath.'/../images/'.$fileName); 
-			    $uploadedFile->saveAs(Yii::getPathOfAlias('webroot').'/image/'.$fileName);
 
+			    if (!empty($uploadedFile)) {
+			    	$uploadedFile->saveAs(Yii::getPathOfAlias('webroot').'/image/'.$fileName);
+			    } 
+			    
 				$this->redirect(array('view','id'=>$model->id));
 
 		    }
+
 		}
 
 		$this->render('update',array(
@@ -164,16 +181,34 @@ class AutosController extends Controller
 	 */
 	public function actionIndex()
 	{
-		/*$dataProvider=new CActiveDataProvider('Autos');
-		$this->render('index',array(
-			'dataProvider'=>$dataProvider,
-		));*/
 
-
+		// Setup Criteria
 		$model = new Autos();
 
-		$autos=Autos::model()->findAll();
-		$this->render("index",array("autos"=>$autos));
+		$criteria = new CDbCriteria;
+
+		$criteria->order = 'id';
+
+		// Count total records
+
+		$pages = new CPagination(Autos::model() -> count());
+
+		// Set Page Limit
+
+		$pages->pageSize=5;
+
+		// Apply page criteria to CDbCriteria
+
+		$pages->applyLimit($criteria);
+
+		// Grab the records
+
+		$autos=Autos::model()->findAll($criteria);
+
+		// Render the view
+
+		$this->render("index",array("autos"=>$autos, "pages"=>$pages));
+		
 
 		
 	}
